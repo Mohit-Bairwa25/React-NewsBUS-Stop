@@ -1,0 +1,10 @@
+in Windows Explorer Press Shift + Right Click
+Open Powe Shell Here
+npx create-react-app newsapp
+
+"newsapp" is name of the app 
+It will create a folder name newsapp with all essentail files
+
+use 
+npm start
+to use the app

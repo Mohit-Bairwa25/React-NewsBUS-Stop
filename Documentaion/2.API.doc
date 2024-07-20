@@ -1,0 +1,17 @@
+https://newsapi.org/pricing
+
+We will Take API From above link
+
+https://newsapi.org/docs/get-started
+
+From this link copy Example response
+
+It has nealy 1306 lines
+
+Replace -"source": with "source": 
+Replace -{ with {
+
+Your API key is: 241c3b2483cd44128fa887a3d56505e2
+
+
+
