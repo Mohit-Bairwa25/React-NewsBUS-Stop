@@ -1,0 +1,26 @@
+impt
+import PropTypes from 'prop-types'
+
+rfc
+import React from 'react'
+
+export default function News() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+rcc
+import React, { Component } from 'react'
+
+export default class News extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
+}
