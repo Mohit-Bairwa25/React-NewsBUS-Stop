@@ -2,23 +2,23 @@ import './App.css';
 import React, { Component } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
+import HomeNews from './components/Home';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 
-
 export default class App extends Component {
-  pageSize=6;
+  pageSize = 6;
   render() {
     return (
       <div>
         <Router>
           <Navbar/>
             <Switch>
-                <Route exact path="/"> <News key="general" pageSize={this.pageSize} country="in" category="general"/></Route>
-                <Route exact path="/home"> <News key="general" pageSize={this.pageSize} country="in" category="general"/></Route>
+                <Route exact path="/"> <HomeNews key="home" pageSize={this.pageSize} country="in" category="general"/></Route>
+                <Route exact path="/home"> <HomeNews key="home" pageSize={this.pageSize} country="in" category="general"/></Route>
                 <Route exact path="/general"> <News key="general" pageSize={this.pageSize} country="in" category="general"/></Route>
                 <Route exact path="/business"> <News key="business" pageSize={this.pageSize} country="in" category="business"/> </Route>
                 <Route exact path="/entertainment"> <News key="entertainment" pageSize={this.pageSize} country="in" category="entertainment"/> </Route>
@@ -32,5 +32,3 @@ export default class App extends Component {
     )
   }
 }
-
-
