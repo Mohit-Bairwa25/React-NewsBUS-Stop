@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import NewsItem from './NewsItem';
 
 export class Home extends Component {
   static defaultProps = {
@@ -35,24 +34,19 @@ export class Home extends Component {
   async updateNews() {
     this.setState({ loading: true });
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=241c3b2483cd44128fa887a3d56505e2&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    try {
-      let data = await fetch(url);
-      let parseData = await data.json();
-      
-      // Filter out duplicate articles
-      const newArticles = parseData.articles.filter(newArticle => 
-        !this.state.articles.some(existingArticle => existingArticle.url === newArticle.url)
-      );
+    let data = await fetch(url);
+    let parseData = await data.json();
     
-      this.setState(prevState => ({
-        articles: [...prevState.articles, ...newArticles],
-        totalResults: parseData.totalResults,
-        loading: false,
-      }));
-    } catch (error) {
-      console.error("Error fetching news:", error);
-      this.setState({ loading: false });
-    }
+    // Filter out duplicate articles
+    const newArticles = parseData.articles.filter(newArticle => 
+      !this.state.articles.some(existingArticle => existingArticle.url === newArticle.url)
+    );
+  
+    this.setState({
+      articles: [...this.state.articles, ...newArticles],
+      totalResults: parseData.totalResults,
+      loading: false,
+    });
   }
 
   async componentDidMount() {
@@ -68,15 +62,18 @@ export class Home extends Component {
   };
 
   render() {
+    // ... other code ...
+  
     const uniqueArticles = Array.from(new Set(this.state.articles.map(a => a.url)))
-      .map(url => this.state.articles.find(a => a.url === url));
+      .map(url => {
+        return this.state.articles.find(a => a.url === url)
+      });
   
     return (
       <>
         <h2 className="text-center" style={{ margin: '35px 0px' }}>
           Top Headlines - Home
         </h2>
-        {this.state.loading && <Spinner />}
         <InfiniteScroll
           dataLength={uniqueArticles.length}
           next={this.fetchMoreData}
@@ -85,19 +82,9 @@ export class Home extends Component {
         >
           <div className="container">
             <div className="row">
-              {uniqueArticles.map((element) => (
-                <div className="col-md-4" key={element.url}>
-                  <NewsItem
-                    title={element.title ? element.title.slice(0, 45) : ""}
-                    description={element.description ? element.description.slice(0, 88) : ""}
-                    imageUrl={element.urlToImage}
-                    newsUrl={element.url}
-                    author={element.author}
-                    date={element.publishedAt}
-                    source={element.source.name}
-                  />
-                </div>
-              ))}
+              {uniqueArticles.map((element) => {
+                // ... NewsItem component ...
+              })}
             </div>
           </div>
         </InfiniteScroll>
