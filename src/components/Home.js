@@ -34,7 +34,9 @@ export class Home extends Component {
 
   async updateNews() {
     this.setState({ loading: true });
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=241c3b2483cd44128fa887a3d56505e2&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(40);
     try {
       let data = await fetch(url);
       let parseData = await data.json();
@@ -53,6 +55,7 @@ export class Home extends Component {
       console.error("Error fetching news:", error);
       this.setState({ loading: false });
     }
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
