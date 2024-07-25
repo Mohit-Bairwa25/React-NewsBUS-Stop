@@ -13,5 +13,16 @@ Replace -{ with {
 
 Your API key is: 241c3b2483cd44128fa887a3d56505e2
 
+{
+  "status": "error",
+  "code": "rateLimited",
+  "message": "You have made too many requests recently. Developer accounts are limited to 100 requests over a 24 hour period (50 requests available every 12 hours). Please upgrade to a paid plan if you need more requests."
+}
+
+Another API Key : ae45bdab18a54154a7f61a25a53028ae
+
+after changing api do npm start
+
+
 
 

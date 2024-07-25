@@ -17,6 +17,10 @@ export class Home extends Component {
     category: PropTypes.string,
   };
 
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,32 +28,19 @@ export class Home extends Component {
       loading: true,
       page: 1,
       totalResults: 0,
-      error: null,
     };
     document.title = `NewBus-Stop - Home`;
   }
 
-  capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
   async updateNews() {
-    this.setState({ loading: true, error: null });
+    this.setState({ loading: true });
     this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.props.setProgress(40);
     try {
-      let response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      let parseData = await response.json();
+      let data = await fetch(url);
+      let parseData = await data.json();
       
-      if (!parseData.articles) {
-        console.error("Unexpected API response:", parseData);
-        throw new Error("API response does not contain articles");
-      }
-
       // Filter out duplicate articles
       const newArticles = parseData.articles.filter(newArticle => 
         !this.state.articles.some(existingArticle => existingArticle.url === newArticle.url)
@@ -57,45 +48,42 @@ export class Home extends Component {
     
       this.setState(prevState => ({
         articles: [...prevState.articles, ...newArticles],
-        totalResults: parseData.totalResults || 0,
+        totalResults: parseData.totalResults,
         loading: false,
       }));
     } catch (error) {
       console.error("Error fetching news:", error);
-      this.setState({ 
-        loading: false,
-        error: error.message 
-      });
+      this.setState({ loading: false });
     }
     this.props.setProgress(100);
   }
 
   async componentDidMount() {
-    this.updateNews();
+    this.setState({ page: 1 }, () => {
+      this.updateNews();
+    });
   }
 
-  fetchMoreData = () => {
+  fetchMoreData = async () => {
     this.setState(prevState => ({ page: prevState.page + 1 }), () => {
       this.updateNews();
     });
   };
 
   render() {
-    const { articles, loading, error, totalResults } = this.state;
-    const uniqueArticles = Array.from(new Set(articles.map(a => a.url)))
-      .map(url => articles.find(a => a.url === url));
+    const uniqueArticles = Array.from(new Set(this.state.articles.map(a => a.url)))
+      .map(url => this.state.articles.find(a => a.url === url));
   
     return (
       <>
         <h2 className="text-center" style={{ margin: '35px 0px' }}>
           Top Headlines - Home
         </h2>
-        {loading && <Spinner />}
-        {error && <p className="text-center text-danger">{error}</p>}
+        {this.state.loading && <Spinner />}
         <InfiniteScroll
           dataLength={uniqueArticles.length}
           next={this.fetchMoreData}
-          hasMore={articles.length < totalResults}
+          hasMore={this.state.articles.length < this.state.totalResults}
           loader={<Spinner />}
         >
           <div className="container">
@@ -109,7 +97,7 @@ export class Home extends Component {
                     newsUrl={element.url}
                     author={element.author}
                     date={element.publishedAt}
-                    source={element.source?.name}
+                    source={element.source.name}
                   />
                 </div>
               ))}

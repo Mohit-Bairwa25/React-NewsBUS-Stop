@@ -2,3 +2,8 @@ npm install react-router-dom
 
 change <a to <Link
 change herf with to
+
+If the Changing category is not working try this 
+npm audit fix --force
+then
+npm install react-router-dom
