@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
+import About from './components/About';
 
 export default class App extends Component {
   pageSize = 9;
@@ -39,9 +40,9 @@ export default class App extends Component {
             <Route exact path="/home">
               <Home setProgress={this.setProgress} apiKey={this.apiKey} key="home" pageSize={this.pageSize} country="in" category="general"/>
             </Route>
-            <Route exact path="/general">
+            {/* <Route exact path="/general">
               <News setProgress={this.setProgress} apiKey={this.apiKey} key="general" pageSize={this.pageSize} country="in" category="general"/>
-            </Route>
+            </Route> */}
             <Route exact path="/business">
               <News setProgress={this.setProgress} apiKey={this.apiKey} key="business" pageSize={this.pageSize} country="in" category="business"/>
             </Route>
@@ -59,6 +60,9 @@ export default class App extends Component {
             </Route>
             <Route exact path="/technology">
               <News setProgress={this.setProgress} apiKey={this.apiKey} key="technology" pageSize={this.pageSize} country="in" category="technology"/>
+            </Route>
+            <Route exact path="/About">
+              <About/>
             </Route>
           </Switch>
         </Router>

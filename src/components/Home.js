@@ -87,7 +87,7 @@ export class Home extends Component {
   
     return (
       <>
-        <h2 className="text-center" style={{ margin: '35px 0px' }}>
+        <h2 className="text-center" style={{ margin: '35px 0px', marginTop:'90px' }}>
           Top Headlines - Home
         </h2>
         {loading && <Spinner />}
