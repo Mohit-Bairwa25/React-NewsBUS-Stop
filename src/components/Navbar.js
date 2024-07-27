@@ -18,28 +18,28 @@ export class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/home">Home</Link>
+                                <Link className="nav-link" to="/Home">Home</Link>
                             </li>
                             {/* <li className="nav-item">
-                                <Link className="nav-link" to="/general">General</Link>
+                                <Link className="nav-link" to="/General">General</Link>
                             </li> */}
                             <li className="nav-item">
-                                <Link className="nav-link" to="/business">Business</Link>
+                                <Link className="nav-link" to="/Business">Business</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/entertainment">Entertainment</Link>
+                                <Link className="nav-link" to="/Entertainment">Entertainment</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/health">Health</Link>
+                                <Link className="nav-link" to="/Health">Health</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/science">Science</Link>
+                                <Link className="nav-link" to="/Science">Science</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/sports">Sports</Link>
+                                <Link className="nav-link" to="/Sports">Sports</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/technology">Technology</Link>
+                                <Link className="nav-link" to="/Technology">Technology</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/About">About</Link>

@@ -1,0 +1,55 @@
+In Code with Harry React Video No 17 watch From 10:00
+
+For Routing He Has used Switches we have used Router {May Be Thats why we are not faceing the propblem he has 
+or there may has an update in react that has resolved this issue}
+
+Go to this Link
+https://create-react-app.dev/docs/deployment/#github-pages
+
+Step 1: Add homepage to package.json
+"homepage": "https://myusername.github.io/my-app",
+
+{
+  "homepage": "https://Mohit-Bairwa25.github.io/React-Text_Utility",
+  "name": "react-understanding",
+  "version": "0.1.0",
+  "private": true,
+
+  Step 2: Install gh-pages and add deploy to scripts in package.json
+
+  npm install --save gh-pages
+
+  Add the following scripts in your package.json:
+
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+
+    "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+
+    "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+
+After this, 
+git add .
+git commit -m "Valuable Message"
+git push origin main
+
+
+Step 3: Deploy the site by running npm run deploy
+npm run deploy
+
+Go to this Link
+https://github.com/Mohit-Bairwa25/React-Text_Utility/settings
+make sure branch is gh-pages
+
+Now this is a working Link
+
+https://Mohit-Bairwa25.github.io/React-Text_Utility
+
+
+
