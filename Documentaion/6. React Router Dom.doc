@@ -7,3 +7,5 @@ If the Changing category is not working try this
 npm audit fix --force
 then
 npm install react-router-dom
+
+npm install react-router-dom@latest

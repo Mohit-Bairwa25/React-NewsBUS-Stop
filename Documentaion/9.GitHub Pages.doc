@@ -1,7 +1,32 @@
 In Code with Harry React Video No 17 watch From 10:00
 
-For Routing He Has used Switches we have used Router {May Be Thats why we are not faceing the propblem he has 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+  return (
+    <>
+      <Router>
+        <Navbar title="TEXT UTILS 2.0" aboutCompany="Text Form" mode={mode} toggleMode={toggleMode}/>
+        <div className="container my-5">
+        <Alert alert={alert} mode={mode} toggleMode={toggleMode}/>
+            <Routes>
+              <Route path="/homepage" element={<Homepage />} />
+              <Route path="/TextForm" 
+              element={<TextForm showAlert={showAlert} heading="Write Your Analyzing Text" mode={mode} toggleMode={toggleMode}/>} />
+              <Route path="/About" element={<About />} />
+            </Routes>
+          </div>
+        </Router>
+    </>
+  );
+}
+
+For Routing He Has used Switches we have used Routes {May Be Thats why we are not faceing the propblem he has 
 or there may has an update in react that has resolved this issue}
+
+Upgrade to react-router-dom version 6 and update your route syntax:
+First, install version 6:
+Copy
+npm install react-router-dom@latest
 
 Go to this Link
 https://create-react-app.dev/docs/deployment/#github-pages
@@ -51,5 +76,7 @@ Now this is a working Link
 
 https://Mohit-Bairwa25.github.io/React-News
 
-
-
+If you're still encountering issues, you might need to clear your npm cache:
+npm cache clean --force
+npm update
+npm install react-scripts@latest
