@@ -10,7 +10,7 @@ Step 1: Add homepage to package.json
 "homepage": "https://myusername.github.io/my-app",
 
 {
-  "homepage": "https://Mohit-Bairwa25.github.io/React-Text_Utility",
+  "homepage": "https://Mohit-Bairwa25.github.io/React-News",
   "name": "react-understanding",
   "version": "0.1.0",
   "private": true,
