@@ -44,12 +44,12 @@ Step 3: Deploy the site by running npm run deploy
 npm run deploy
 
 Go to this Link
-https://github.com/Mohit-Bairwa25/React-Text_Utility/settings
+https://github.com/Mohit-Bairwa25/React-News/settings
 make sure branch is gh-pages
 
 Now this is a working Link
 
-https://Mohit-Bairwa25.github.io/React-Text_Utility
+https://Mohit-Bairwa25.github.io/React-News
 
 
 
