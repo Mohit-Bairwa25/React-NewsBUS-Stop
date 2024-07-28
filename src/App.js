@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import News from './components/News';
 import Home from './components/Home';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
