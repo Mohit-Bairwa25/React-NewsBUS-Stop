@@ -6,13 +6,11 @@ import NewsItem from './NewsItem';
 
 export class Home extends Component {
   static defaultProps = {
-    country: "in",
     pageSize: 8,
     category: "general",
   };
 
   static propTypes = {
-    country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
@@ -36,7 +34,7 @@ export class Home extends Component {
   async updateNews() {
     this.setState({ loading: true, error: null });
     this.props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.props.setProgress(40);
     try {
       let response = await fetch(url);

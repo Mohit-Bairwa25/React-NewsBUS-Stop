@@ -5,13 +5,11 @@ import PropTypes from 'prop-types'
 
 export class News extends Component {
     static defaultProps = {
-        country: 'in',
         pageSize: 8,
         category: 'general',
     }
 
     static propTypes = {
-        country: PropTypes.string,
         pageSize: PropTypes.number,
         category: PropTypes.string,
     }
@@ -35,7 +33,7 @@ export class News extends Component {
         try {
             this.setState({ loading: true });
             this.props.setProgress(10);
-            const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=${this.props.pageSize}`;
+            const url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=${this.props.pageSize}`;
             this.props.setProgress(40);
             let response = await fetch(url);
             if (!response.ok) {
@@ -59,7 +57,7 @@ export class News extends Component {
     componentDidMount() {
         this.updateNews(1);
     }
-      
+
     componentDidUpdate(prevProps) {
         if (this.props.category !== prevProps.category) {
             this.updateNews(1);
@@ -113,4 +111,4 @@ export class News extends Component {
     }
 }
 
-export default News
+export default News;
